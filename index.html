@@ -88,9 +88,9 @@ body::-webkit-scrollbar{display:none}
 
 .photo-wrap{display:flex;flex-direction:column;align-items:center;gap:12px}
 
-/* ── Big photo ring: 180px ── */
+/* ── Bigger photo ring ── */
 .photo-ring{
-  position:relative;width:180px;height:180px;
+  position:relative;width:220px;height:220px;
   border-radius:50%;padding:4px;
   background:conic-gradient(var(--gold),var(--rose),var(--lavender),var(--mint),var(--gold));
   animation:ringRot 6s linear infinite;
@@ -136,12 +136,12 @@ body::-webkit-scrollbar{display:none}
   background:conic-gradient(var(--petal),var(--rose),var(--lavender),var(--mint),var(--petal));animation-direction:reverse}
 
 @media(max-width:520px){
-  .photo-ring{width:130px;height:130px}
+  .photo-ring{width:160px;height:160px}
   .photo-fallback{font-size:3.5rem}
   .photo-name{font-size:1.4rem}
   .photos-heart{font-size:1.9rem;padding-bottom:44px}}
 @media(max-width:360px){
-  .photo-ring{width:105px;height:105px}
+  .photo-ring{width:130px;height:130px}
   .photos-heart{font-size:1.5rem;padding-bottom:36px}}
 
 /* ═══════════════════════════════════════
@@ -157,12 +157,11 @@ body::-webkit-scrollbar{display:none}
   0%,100%{text-shadow:0 0 30px rgba(246,208,122,.35),0 0 70px rgba(255,170,197,.12)}
   50%{text-shadow:0 0 60px rgba(246,208,122,.7),0 0 110px rgba(255,170,197,.32)}}
 
-/* ── YEAR — Playfair Display so "1" is crystal clear ── */
+/* ── YEAR ── */
 .year-block{display:flex;flex-direction:column;align-items:center;margin:16px 0 6px}
 .year-num{
   font-family:'Playfair Display',serif;
   font-size:clamp(5rem,16vw,10rem);font-weight:900;line-height:1;
-  /* solid white + coloured outline — always visible */
   color:#fff;
   -webkit-text-stroke:3px transparent;
   background:linear-gradient(135deg,var(--gold) 0%,var(--coral) 40%,var(--rose) 70%,var(--lavender) 100%);
@@ -170,7 +169,6 @@ body::-webkit-scrollbar{display:none}
   -webkit-background-clip:text;background-clip:text;
   -webkit-text-fill-color:transparent;
   text-shadow:none;
-  /* Fallback outline so numerals are always readable */
   filter:drop-shadow(0 0 18px rgba(246,208,122,.45)) drop-shadow(0 2px 4px rgba(0,0,0,.5));
   animation:yShimmer 4s linear infinite}
 @keyframes yShimmer{0%{background-position:0 50%}100%{background-position:200% 50%}}
@@ -243,7 +241,7 @@ body::-webkit-scrollbar{display:none}
 @keyframes glL{0%,100%{transform:rotate(12deg)}50%{transform:rotate(-12deg)}}
 @keyframes glR{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(12deg)}}
 
-/* Head tilt (cute "leaning in" effect) */
+/* Head tilt */
 .boy-head{animation:boyHead 4s ease-in-out infinite;transform-origin:128px 58px}
 @keyframes boyHead{0%,100%{transform:rotate(0deg)}50%{transform:rotate(8deg)}}
 .girl-head{animation:girlHead 4s ease-in-out infinite;transform-origin:259px 52px}
@@ -333,6 +331,84 @@ body::-webkit-scrollbar{display:none}
   width:160px;height:2px;margin:6px auto 22px;
   background:linear-gradient(90deg,transparent,var(--gold),var(--rose),var(--lavender),transparent);
   border-radius:2px;opacity:.6}
+
+/* ═══════════════════════════════════════
+   PAGE NAV BUTTON
+═══════════════════════════════════════ */
+.next-page-wrap{margin-top:26px;display:flex;justify-content:center}
+.next-page-btn,.back-page-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:14px 28px;border-radius:999px;text-decoration:none;
+  background:linear-gradient(135deg,rgba(246,208,122,.18),rgba(255,107,157,.18));
+  border:1px solid rgba(246,208,122,.4);color:var(--gold2);
+  box-shadow:0 10px 30px rgba(255,107,157,.15);backdrop-filter:blur(12px);
+  font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem;
+  transition:transform .22s ease, box-shadow .22s ease, background .22s ease;
+}
+.next-page-btn:hover,.back-page-btn:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 16px 38px rgba(255,107,157,.24)}
+
+/* ═══════════════════════════════════════
+   SECOND PAGE
+═══════════════════════════════════════ */
+.second-page{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  padding:70px 20px 90px;position:relative;z-index:10;
+}
+.second-page::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,170,197,.18), transparent 22%),
+    radial-gradient(circle at 85% 18%, rgba(246,208,122,.12), transparent 18%),
+    radial-gradient(circle at 50% 100%, rgba(255,255,255,.08), transparent 26%);
+}
+.flower-side{position:absolute;top:0;bottom:0;width:170px;pointer-events:none;opacity:.9;z-index:1}
+.flower-left{left:0}
+.flower-right{right:0;transform:scaleX(-1)}
+.flower-side svg{width:100%;height:100%}
+.romantic-wrap{position:relative;z-index:2;width:min(980px,100%);display:flex;justify-content:center}
+.romantic-card{
+  width:min(760px,100%);
+  background:linear-gradient(180deg, rgba(247,239,232,.97), rgba(243,232,224,.96));
+  color:#8a5f58;border-radius:34px;padding:36px 28px 42px;position:relative;
+  box-shadow:0 30px 70px rgba(0,0,0,.28), inset 0 0 0 1px rgba(255,255,255,.55);
+  overflow:hidden;
+}
+.romantic-card::before,.romantic-card::after{
+  content:'';position:absolute;background:rgba(255,255,255,.32);filter:blur(1px)
+}
+.romantic-card::before{width:180px;height:180px;border-radius:50%;top:-70px;left:-70px}
+.romantic-card::after{width:220px;height:220px;border-radius:50%;bottom:-110px;right:-90px}
+.romantic-top-note{font-size:.76rem;letter-spacing:.25em;text-transform:uppercase;color:#c77f82;text-align:center;margin-bottom:12px}
+.romantic-title{
+  font-family:'Great Vibes',cursive;font-size:clamp(3.1rem,7vw,5.5rem);
+  color:#ff6c2f;text-align:center;line-height:1.05;margin-bottom:20px;
+}
+.romantic-pin{position:absolute;right:44px;top:26px;font-size:3rem;color:#9b9b9b;opacity:.75;transform:rotate(18deg)}
+.romantic-photo-frame{
+  width:min(360px,78vw);margin:0 auto 22px;background:#fff;padding:12px 12px 20px;
+  box-shadow:0 16px 30px rgba(0,0,0,.16);transform:rotate(-2deg);position:relative;z-index:2
+}
+.romantic-photo-frame img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover}
+.romantic-photo-name{
+  position:absolute;left:18px;bottom:18px;font-family:'Great Vibes',cursive;
+  color:#ff7a35;font-size:1.8rem;text-shadow:0 1px 0 rgba(255,255,255,.7)
+}
+.romantic-date{text-align:center;margin-top:2px;margin-bottom:16px}
+.romantic-date .save{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#b77d74}
+.romantic-date .main{font-family:'Playfair Display',serif;font-size:1.45rem;letter-spacing:.18em;color:#b95a3b;margin-top:6px}
+.romantic-message{
+  max-width:560px;margin:0 auto;text-align:center;line-height:1.9;
+  font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:#8a6862
+}
+.romantic-message strong{color:#c96972}
+.romantic-footer{margin-top:24px;text-align:center;color:#bd8a82;font-size:.95rem}
+.second-actions{display:flex;justify-content:center;margin-top:28px}
+@media(max-width:700px){
+  .flower-side{width:100px;opacity:.75}
+  .romantic-card{padding:28px 18px 34px;border-radius:26px}
+  .romantic-pin{right:18px;top:18px;font-size:2.3rem}
+}
 </style>
 </head>
 <body>
@@ -340,37 +416,27 @@ body::-webkit-scrollbar{display:none}
 <canvas id="starCanvas"></canvas>
 <div id="petals"></div>
 
-<!-- ═══ YOUTUBE HIDDEN IFRAME — paste video ID below ═══ -->
-<!-- TO ADD YOUR SONG: Replace  YOUTUBE_VIDEO_ID  with the ID from your YouTube link -->
-<!-- Example: if link is https://www.youtube.com/watch?v=abc123  →  use  abc123  -->
 <iframe id="ytPlayer"
-  src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID?autoplay=1&loop=1&playlist=YOUTUBE_VIDEO_ID&controls=0&mute=0&enablejsapi=1"
+  src="https://www.youtube.com/embed/8PTOkwze0Vw?autoplay=1&loop=1&playlist=8PTOkwze0Vw&controls=0&mute=0&enablejsapi=1"
   allow="autoplay"
   frameborder="0">
 </iframe>
 
-<!-- Music / unmute button -->
 <button id="musicBtn" onclick="toggleYT()" title="Toggle music">
   <span class="micon">🎵</span>
   <span class="mlabel">music</span>
 </button>
 
-<!-- ═══ PAGE ═══ -->
-<div class="page">
+<div class="page" id="topPage">
 
   <div class="moon reveal d1">🌙</div>
   <div class="badge reveal d1">✦ &nbsp; One Beautiful Year &nbsp; ✦</div>
 
-  <!-- ════════════════════════════
-       PHOTO FRAMES
-  ════════════════════════════ -->
   <div class="photos-row reveal d2">
-    <!-- MAHE -->
     <div class="photo-wrap">
       <div class="photo-ring">
         <div class="photo-inner">
-          <img src="mahe.jpg" alt="Mahe"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="mahe.jpg" alt="Mahe" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="photo-fallback" style="display:none">🤴</div>
         </div>
       </div>
@@ -379,12 +445,10 @@ body::-webkit-scrollbar{display:none}
 
     <div class="photos-heart">♥</div>
 
-    <!-- MASHKURA -->
     <div class="photo-wrap">
       <div class="photo-ring">
         <div class="photo-inner">
-          <img src="mashkura.jpg" alt="Mashkura"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img src="mashkura.jpg" alt="Mashkura" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="photo-fallback" style="display:none">👸</div>
         </div>
       </div>
@@ -392,9 +456,6 @@ body::-webkit-scrollbar{display:none}
     </div>
   </div>
 
-  <!-- ════════════════════════════
-       NAMES & YEAR
-  ════════════════════════════ -->
   <h1 class="names reveal d3">Mahe &amp; Mashkura</h1>
   <div class="divider"></div>
 
@@ -409,470 +470,99 @@ body::-webkit-scrollbar{display:none}
     <span>💕</span>
   </div>
 
-  <!-- ════════════════════════════
-       DANCING COUPLE SVG
-  ════════════════════════════ -->
-  <div class="couple-stage reveal d4">
-   <svg class="couple-svg" viewBox="0 0 420 265" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <radialGradient id="gf" cx="50%" cy="100%" r="50%">
-        <stop offset="0%" stop-color="rgba(246,208,122,.22)"/>
-        <stop offset="100%" stop-color="transparent"/>
-      </radialGradient>
-      <radialGradient id="bglow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="rgba(94,207,176,.18)"/>
-        <stop offset="100%" stop-color="transparent"/>
-      </radialGradient>
-      <radialGradient id="gglow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="rgba(255,107,157,.22)"/>
-        <stop offset="100%" stop-color="transparent"/>
-      </radialGradient>
-      <!-- Boy skin tone -->
-      <linearGradient id="skinB" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#fad5a5"/>
-        <stop offset="100%" stop-color="#f0bc84"/>
-      </linearGradient>
-      <!-- Girl skin tone -->
-      <linearGradient id="skinG" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#fcd9b0"/>
-        <stop offset="100%" stop-color="#f5c28a"/>
-      </linearGradient>
-      <!-- Boy suit gradient -->
-      <linearGradient id="suitG" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#2a1f6e"/>
-        <stop offset="100%" stop-color="#1a1248"/>
-      </linearGradient>
-      <!-- Girl dress gradient -->
-      <linearGradient id="dressG" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#ff5580"/>
-        <stop offset="100%" stop-color="#cc1a45"/>
-      </linearGradient>
-      <linearGradient id="dressMid" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#ff6b9d"/>
-        <stop offset="100%" stop-color="#e8335a"/>
-      </linearGradient>
-      <filter id="softGlow">
-        <feGaussianBlur stdDeviation="3" result="blur"/>
-        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter>
-    </defs>
-
-    <!-- Floor glow -->
-    <ellipse cx="210" cy="260" rx="190" ry="11" fill="url(#gf)"/>
-
-    <!-- ████████████████████████
-         BOY  (left)
-    ████████████████████████ -->
-    <g class="boy-body">
-      <ellipse cx="135" cy="135" rx="62" ry="85" fill="url(#bglow)"/>
-
-      <!-- Shoes with highlight -->
-      <ellipse cx="116" cy="258" rx="16" ry="6" fill="#1a1008"/>
-      <ellipse cx="114" cy="255" rx="8" ry="2.5" fill="rgba(255,255,255,.15)"/>
-      <ellipse cx="150" cy="258" rx="16" ry="6" fill="#1a1008"/>
-      <ellipse cx="148" cy="255" rx="8" ry="2.5" fill="rgba(255,255,255,.15)"/>
-
-      <!-- Legs with crease detail -->
-      <g class="blegL">
-        <rect x="108" y="160" width="19" height="96" rx="9.5" fill="#1a1248"/>
-        <rect x="113" y="160" width="4" height="96" rx="2" fill="rgba(255,255,255,.06)"/>
-      </g>
-      <g class="blegR">
-        <rect x="134" y="160" width="19" height="96" rx="9.5" fill="#1a1248"/>
-        <rect x="139" y="160" width="4" height="96" rx="2" fill="rgba(255,255,255,.06)"/>
-      </g>
-
-      <!-- Suit body -->
-      <rect x="98" y="98" width="68" height="66" rx="14" fill="url(#suitG)"/>
-      <!-- Suit shine -->
-      <path d="M102 104 Q112 100 118 110 Q108 118 102 115 Z" fill="rgba(255,255,255,.08)"/>
-      <!-- Lapels -->
-      <polygon points="132,98 118,120 132,130" fill="rgba(255,255,255,.14)"/>
-      <polygon points="132,98 146,120 132,130" fill="rgba(255,255,255,.09)"/>
-      <rect x="129" y="98" width="6" height="66" fill="rgba(255,255,255,.07)"/>
-      <!-- Pocket square — gold -->
-      <rect x="104" y="107" width="13" height="10" rx="2.5" fill="rgba(246,208,122,.5)"/>
-      <rect x="107" y="105" width="7" height="4" rx="1" fill="rgba(246,208,122,.7)"/>
-      <!-- Buttons -->
-      <circle cx="132" cy="118" r="2.5" fill="rgba(246,208,122,.55)"/>
-      <circle cx="132" cy="128" r="2.5" fill="rgba(246,208,122,.45)"/>
-      <!-- Belt -->
-      <rect x="98" y="160" width="68" height="7" rx="3.5" fill="#0e0b30"/>
-      <rect x="126" y="158" width="16" height="9" rx="2.5" fill="rgba(246,208,122,.6)"/>
-      <circle cx="134" cy="162" r="2" fill="rgba(246,208,122,.9)"/>
-      <!-- Bow tie -->
-      <polygon points="126,98 132,109 138,98 132,91" fill="#e8335a"/>
-      <circle cx="132" cy="105" r="3.5" fill="#c0192e"/>
-      <path d="M127 96 Q132 94 137 96" stroke="#ff6b9d" stroke-width="1.5" fill="none" opacity=".5"/>
-
-      <!-- ── Free arm (LEFT) ── -->
-      <g class="boy-free-arm">
-        <path d="M100 108 Q78 95 64 77" stroke="url(#suitG)" stroke-width="13" stroke-linecap="round" fill="none"/>
-        <path d="M100 108 Q79 96 66 79" stroke="url(#skinB)" stroke-width="10" stroke-linecap="round" fill="none"/>
-        <!-- Cuff -->
-        <ellipse cx="72" cy="87" rx="8" ry="5" fill="rgba(246,208,122,.35)" transform="rotate(-30,72,87)"/>
-        <!-- Hand -->
-        <ellipse cx="62" cy="75" rx="10" ry="9" fill="url(#skinB)"/>
-        <!-- Fingers with knuckle hint -->
-        <ellipse cx="55" cy="69" rx="4.5" ry="3.5" fill="url(#skinB)" transform="rotate(-20,55,69)"/>
-        <ellipse cx="61" cy="65" rx="4.5" ry="3.5" fill="url(#skinB)" transform="rotate(-10,61,65)"/>
-        <ellipse cx="68" cy="64" rx="4.5" ry="3.5" fill="url(#skinB)" transform="rotate(5,68,64)"/>
-        <path d="M57 72 Q62 68 69 68" stroke="rgba(180,120,60,.3)" stroke-width="1.5" fill="none"/>
-      </g>
-
-      <!-- Boy's RIGHT arm toward girl -->
-      <path d="M164 108 Q176 100 190 95" stroke="url(#suitG)" stroke-width="13" stroke-linecap="round" fill="none"/>
-      <path d="M164 108 Q175 101 188 96" stroke="url(#skinB)" stroke-width="10" stroke-linecap="round" fill="none"/>
-      <ellipse cx="180" cy="101" rx="9" ry="5" fill="rgba(246,208,122,.32)" transform="rotate(20,180,101)"/>
-
-      <!-- HEAD -->
-      <g class="boy-head">
-        <!-- Neck -->
-        <rect x="124" y="78" width="16" height="24" rx="6" fill="url(#skinB)"/>
-        <!-- Shirt collar -->
-        <polygon points="124,98 118,90 124,82" fill="#fff" opacity=".9"/>
-        <polygon points="140,98 146,90 140,82" fill="#fff" opacity=".9"/>
-        <!-- Head circle - bigger, rounder -->
-        <circle cx="132" cy="58" r="28" fill="url(#skinB)"/>
-        <!-- Ear left -->
-        <ellipse cx="105" cy="60" rx="7" ry="9" fill="url(#skinB)"/>
-        <ellipse cx="105" cy="60" rx="4" ry="6" fill="rgba(200,120,80,.2)"/>
-        <!-- Ear right -->
-        <ellipse cx="159" cy="60" rx="7" ry="9" fill="url(#skinB)"/>
-        <ellipse cx="159" cy="60" rx="4" ry="6" fill="rgba(200,120,80,.2)"/>
-        <!-- Hair — rich dark hair with highlights -->
-        <ellipse cx="132" cy="35" rx="28" ry="16" fill="#1c0c04"/>
-        <path d="M106 46 Q100 35 108 28 Q120 22 132 20 Q144 22 156 28 Q164 35 158 46"
-              fill="#1c0c04"/>
-        <!-- Hair highlights -->
-        <path d="M115 26 Q125 22 132 23" stroke="#3d1a08" stroke-width="3" stroke-linecap="round" fill="none" opacity=".6"/>
-        <path d="M118 24 Q126 20 133 21" stroke="#5a2c14" stroke-width="2" stroke-linecap="round" fill="none" opacity=".5"/>
-        <!-- Side hair -->
-        <ellipse cx="108" cy="44" rx="11" ry="9" fill="#1c0c04"/>
-        <ellipse cx="156" cy="44" rx="11" ry="9" fill="#1c0c04"/>
-        <!-- EYES — big cartoon eyes facing right (toward girl) -->
-        <g class="boy-eye-l">
-          <!-- white -->
-          <ellipse cx="122" cy="56" rx="7" ry="7.5" fill="#fff"/>
-          <!-- iris — teal color -->
-          <circle cx="124" cy="57" r="5" fill="#2a8080"/>
-          <!-- pupil -->
-          <circle cx="124.5" cy="57.5" r="3" fill="#0a0a0a"/>
-          <!-- shine dots -->
-          <circle cx="126" cy="55" r="1.5" fill="#fff" opacity=".9"/>
-          <circle cx="122.5" cy="58.5" r="1" fill="#fff" opacity=".5"/>
-        </g>
-        <g class="boy-eye-r">
-          <ellipse cx="142" cy="56" rx="7" ry="7.5" fill="#fff"/>
-          <circle cx="144" cy="57" r="5" fill="#2a8080"/>
-          <circle cx="144.5" cy="57.5" r="3" fill="#0a0a0a"/>
-          <circle cx="146" cy="55" r="1.5" fill="#fff" opacity=".9"/>
-          <circle cx="142.5" cy="58.5" r="1" fill="#fff" opacity=".5"/>
-        </g>
-        <!-- Eyebrows -->
-        <path d="M115 46 Q122 42 128 45" stroke="#1c0c04" stroke-width="2.8" stroke-linecap="round" fill="none"/>
-        <path d="M136 45 Q142 42 149 46" stroke="#1c0c04" stroke-width="2.8" stroke-linecap="round" fill="none"/>
-        <!-- Nose -->
-        <path d="M130 64 Q132 68 134 64" stroke="#c8905a" stroke-width="2" stroke-linecap="round" fill="none"/>
-        <ellipse cx="128" cy="67" rx="3" ry="2" fill="rgba(180,100,50,.2)"/>
-        <ellipse cx="136" cy="67" rx="3" ry="2" fill="rgba(180,100,50,.2)"/>
-        <!-- Blush -->
-        <ellipse cx="112" cy="65" rx="9" ry="5" fill="#ffb3a7" opacity=".45"/>
-        <ellipse cx="152" cy="65" rx="9" ry="5" fill="#ffb3a7" opacity=".45"/>
-        <!-- Smile — big happy -->
-        <path d="M119 73 Q132 84 145 73" stroke="#c07050" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-        <path d="M121 74 Q132 82 143 74" fill="#e88878" opacity=".35"/>
-        <!-- Teeth hint -->
-        <path d="M123 75 Q132 80 141 75 Q137 80 127 80 Z" fill="#fff" opacity=".55"/>
-      </g><!-- /boy head -->
-    </g><!-- /boy body -->
-
-
-    <!-- ████████████████████████
-         GIRL  (right)
-    ████████████████████████ -->
-    <g class="girl-body">
-      <ellipse cx="272" cy="135" rx="66" ry="90" fill="url(#gglow)"/>
-
-      <!-- Shoes with heels -->
-      <ellipse cx="247" cy="258" rx="16" ry="6" fill="#b01030"/>
-      <rect x="240" y="248" width="6" height="14" rx="3" fill="#b01030"/>
-      <ellipse cx="244" cy="256" rx="7" ry="2" fill="rgba(255,255,255,.2)"/>
-      <ellipse cx="278" cy="258" rx="16" ry="6" fill="#b01030"/>
-      <rect x="276" y="248" width="6" height="14" rx="3" fill="#b01030"/>
-      <ellipse cx="278" cy="256" rx="7" ry="2" fill="rgba(255,255,255,.2)"/>
-
-      <!-- Legs (under skirt) -->
-      <g class="glegL">
-        <rect x="239" y="160" width="17" height="88" rx="8.5" fill="url(#skinG)" opacity=".88"/>
-      </g>
-      <g class="glegR">
-        <rect x="263" y="160" width="17" height="88" rx="8.5" fill="url(#skinG)" opacity=".88"/>
-      </g>
-
-      <!-- SKIRT -->
-      <g class="girl-skirt">
-        <path d="M220 120 Q196 170 202 215 Q216 252 259 254 Q302 252 316 215 Q322 170 298 120 Z"
-              fill="url(#dressG)" opacity=".92"/>
-        <!-- skirt sheen -->
-        <path d="M226 134 Q204 182 210 218 Q222 248 259 251"
-              stroke="rgba(255,150,180,.5)" stroke-width="2.5" fill="none"/>
-        <path d="M292 134 Q314 182 308 218 Q296 248 259 251"
-              stroke="rgba(255,150,180,.5)" stroke-width="2.5" fill="none"/>
-        <!-- highlight panel -->
-        <path d="M242 152 Q259 143 276 152 Q272 196 259 208 Q246 196 242 152 Z"
-              fill="rgba(255,255,255,.09)"/>
-        <!-- lace hem multi-wave -->
-        <path d="M202 215 Q210 224 218 215 Q226 224 234 215 Q242 224 250 215 Q258 224 266 215 Q274 224 282 215 Q290 224 298 215 Q306 224 316 215"
-              stroke="#ffaac5" stroke-width="2.5" fill="none" opacity=".6"/>
-        <!-- second hem -->
-        <path d="M205 220 Q213 228 221 220 Q229 228 237 220 Q245 228 253 220 Q261 228 269 220 Q277 228 285 220 Q293 228 301 220 Q309 228 314 220"
-              stroke="rgba(255,200,220,.4)" stroke-width="1.5" fill="none"/>
-      </g>
-
-      <!-- Bodice -->
-      <path d="M220 120 Q226 98 240 90 Q248 84 259 84 Q270 84 278 90 Q292 98 298 120 Z"
-            fill="url(#dressMid)" opacity=".96"/>
-      <!-- Neckline detail -->
-      <path d="M242 90 Q259 104 276 90" stroke="rgba(255,255,255,.4)" stroke-width="2.5"
-            stroke-linecap="round" fill="none"/>
-      <!-- Dress shine top -->
-      <path d="M225 122 Q238 112 248 116 Q240 108 230 115 Z" fill="rgba(255,255,255,.12)"/>
-      <!-- Waist belt / sash -->
-      <path d="M222 122 Q259 130 296 122" stroke="#c0192e" stroke-width="5.5"
-            stroke-linecap="round" fill="none" opacity=".65"/>
-      <path d="M222 122 Q259 130 296 122" stroke="rgba(255,200,220,.4)" stroke-width="1.5"
-            stroke-linecap="round" fill="none"/>
-      <!-- Flower brooch — detailed -->
-      <circle cx="259" cy="105" r="10" fill="#ff6b9d" opacity=".8"/>
-      <circle cx="259" cy="105" r="6.5" fill="#fff" opacity=".3"/>
-      <circle cx="259" cy="105" r="4" fill="#e8335a" opacity=".85"/>
-      <!-- petals of brooch -->
-      <ellipse cx="259" cy="95" rx="3.5" ry="5.5" fill="#ffaac5" opacity=".7"/>
-      <ellipse cx="259" cy="115" rx="3.5" ry="5.5" fill="#ffaac5" opacity=".7"/>
-      <ellipse cx="249" cy="105" rx="5.5" ry="3.5" fill="#ffaac5" opacity=".7"/>
-      <ellipse cx="269" cy="105" rx="5.5" ry="3.5" fill="#ffaac5" opacity=".7"/>
-
-      <!-- Sleeve puffs -->
-      <ellipse cx="220" cy="110" rx="15" ry="11" fill="url(#dressMid)" opacity=".9" transform="rotate(22,220,110)"/>
-      <ellipse cx="215" cy="108" rx="7" ry="5" fill="rgba(255,255,255,.12)" transform="rotate(22,215,108)"/>
-      <ellipse cx="298" cy="110" rx="15" ry="11" fill="url(#dressMid)" opacity=".9" transform="rotate(-22,298,110)"/>
-      <ellipse cx="303" cy="108" rx="7" ry="5" fill="rgba(255,255,255,.12)" transform="rotate(-22,303,108)"/>
-
-      <!-- Girl FREE arm (RIGHT, waves up) -->
-      <g class="girl-free-arm">
-        <path d="M296 112 Q316 98 330 80" stroke="url(#dressMid)" stroke-width="13" stroke-linecap="round" fill="none" opacity=".9"/>
-        <path d="M296 112 Q315 99 328 82" stroke="url(#skinG)" stroke-width="10" stroke-linecap="round" fill="none"/>
-        <!-- Cuff -->
-        <ellipse cx="322" cy="88" rx="9" ry="5" fill="rgba(255,107,157,.38)" transform="rotate(30,322,88)"/>
-        <!-- Hand -->
-        <ellipse cx="334" cy="78" rx="10" ry="9" fill="url(#skinG)"/>
-        <ellipse cx="341" cy="71" rx="4.5" ry="3.5" fill="url(#skinG)" transform="rotate(20,341,71)"/>
-        <ellipse cx="336" cy="67" rx="4.5" ry="3.5" fill="url(#skinG)" transform="rotate(10,336,67)"/>
-        <ellipse cx="329" cy="66" rx="4.5" ry="3.5" fill="url(#skinG)" transform="rotate(-5,329,66)"/>
-      </g>
-
-      <!-- Girl LEFT arm toward boy -->
-      <path d="M222 112 Q208 104 196 98" stroke="url(#dressMid)" stroke-width="13" stroke-linecap="round" fill="none" opacity=".9"/>
-      <path d="M222 112 Q209 105 198 99" stroke="url(#skinG)" stroke-width="10" stroke-linecap="round" fill="none"/>
-      <ellipse cx="208" cy="105" rx="9" ry="5" fill="rgba(255,107,157,.35)" transform="rotate(-20,208,105)"/>
-
-      <!-- HEAD -->
-      <g class="girl-head">
-        <!-- Flowing hair back -->
-        <ellipse cx="259" cy="50" rx="30" ry="34" fill="#1c0c04"/>
-        <path d="M231 44 Q212 90 220 148 Q228 112 238 100" fill="#1c0c04"/>
-        <path d="M287 44 Q306 90 298 148 Q290 112 280 100" fill="#1c0c04"/>
-        <!-- Neck -->
-        <rect x="251" y="76" width="16" height="22" rx="6" fill="url(#skinG)"/>
-        <!-- Head circle -->
-        <circle cx="259" cy="52" r="28" fill="url(#skinG)"/>
-        <!-- Ears -->
-        <ellipse cx="232" cy="54" rx="7" ry="9" fill="url(#skinG)"/>
-        <ellipse cx="232" cy="54" rx="4" ry="6" fill="rgba(200,120,80,.18)"/>
-        <ellipse cx="286" cy="54" rx="7" ry="9" fill="url(#skinG)"/>
-        <ellipse cx="286" cy="54" rx="4" ry="6" fill="rgba(200,120,80,.18)"/>
-        <!-- Earrings -->
-        <circle cx="232" cy="62" r="4" fill="rgba(246,208,122,.85)"/>
-        <circle cx="232" cy="62" r="2.5" fill="rgba(246,208,122,1)"/>
-        <circle cx="286" cy="62" r="4" fill="rgba(246,208,122,.85)"/>
-        <!-- Hair front -->
-        <ellipse cx="259" cy="30" rx="28" ry="14" fill="#1c0c04"/>
-        <path d="M233 36 Q236 25 246 29" fill="#1c0c04"/>
-        <path d="M285 36 Q282 25 272 29" fill="#1c0c04"/>
-        <!-- Hair highlight -->
-        <path d="M242 26 Q252 22 259 23" stroke="#3d1a08" stroke-width="3" stroke-linecap="round" fill="none" opacity=".6"/>
-        <path d="M244 24 Q253 20 260 21" stroke="#5a2c14" stroke-width="2" stroke-linecap="round" fill="none" opacity=".5"/>
-        <!-- Hair accessory (flower clip) -->
-        <circle cx="282" cy="31" r="8" fill="#ff5580" opacity=".88"/>
-        <circle cx="282" cy="31" r="5" fill="#ff9dbb" opacity=".7"/>
-        <circle cx="282" cy="31" r="2.5" fill="#fff" opacity=".8"/>
-        <!-- Hair accessory petals -->
-        <ellipse cx="282" cy="23" rx="3" ry="4.5" fill="#ff5580" opacity=".7"/>
-        <ellipse cx="282" cy="39" rx="3" ry="4.5" fill="#ff5580" opacity=".7"/>
-        <ellipse cx="274" cy="31" rx="4.5" ry="3" fill="#ff5580" opacity=".7"/>
-        <ellipse cx="290" cy="31" rx="4.5" ry="3" fill="#ff5580" opacity=".7"/>
-
-        <!-- EYES — big cartoon, facing left toward boy -->
-        <g class="girl-eye-l">
-          <ellipse cx="248" cy="50" rx="8" ry="8.5" fill="#fff"/>
-          <!-- iris — warm brown / amber -->
-          <circle cx="246" cy="51" r="6" fill="#8B4513"/>
-          <!-- inner iris ring -->
-          <circle cx="246" cy="51" r="4.5" fill="#6B3410"/>
-          <!-- pupil -->
-          <circle cx="245.5" cy="51.5" r="3" fill="#0a0a0a"/>
-          <!-- shine -->
-          <circle cx="248" cy="48" r="2" fill="#fff" opacity=".92"/>
-          <circle cx="243.5" cy="52.5" r="1.2" fill="#fff" opacity=".5"/>
-        </g>
-        <g class="girl-eye-r">
-          <ellipse cx="270" cy="50" rx="8" ry="8.5" fill="#fff"/>
-          <circle cx="268" cy="51" r="6" fill="#8B4513"/>
-          <circle cx="268" cy="51" r="4.5" fill="#6B3410"/>
-          <circle cx="267.5" cy="51.5" r="3" fill="#0a0a0a"/>
-          <circle cx="270" cy="48" r="2" fill="#fff" opacity=".92"/>
-          <circle cx="265.5" cy="52.5" r="1.2" fill="#fff" opacity=".5"/>
-        </g>
-        <!-- Eyelashes upper (thick, curled) -->
-        <path d="M240 42 L238 37 M244 40 L243 36 M248 41 L249 36"
-              stroke="#1c0c04" stroke-width="2" stroke-linecap="round"/>
-        <path d="M260 42 L258 37 M264 40 L263 36 M268 41 L270 36"
-              stroke="#1c0c04" stroke-width="2" stroke-linecap="round"/>
-        <!-- Eyebrows (arched, expressive) -->
-        <path d="M240 40 Q248 35 254 38" stroke="#1c0c04" stroke-width="3" stroke-linecap="round" fill="none"/>
-        <path d="M264 38 Q270 35 278 40" stroke="#1c0c04" stroke-width="3" stroke-linecap="round" fill="none"/>
-        <!-- Nose (delicate) -->
-        <path d="M257 62 Q259 66 261 62" stroke="#c8905a" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-        <ellipse cx="255" cy="64" rx="2.5" ry="1.8" fill="rgba(180,100,50,.18)"/>
-        <ellipse cx="263" cy="64" rx="2.5" ry="1.8" fill="rgba(180,100,50,.18)"/>
-        <!-- Blush -->
-        <ellipse cx="239" cy="60" rx="10" ry="5.5" fill="#ffb3a7" opacity=".55"/>
-        <ellipse cx="279" cy="60" rx="10" ry="5.5" fill="#ffb3a7" opacity=".55"/>
-        <!-- Lips (shaped) -->
-        <path d="M250 70 Q259 79 268 70" stroke="#d06060" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-        <!-- upper lip curve -->
-        <path d="M252 70 Q255 67 259 68 Q263 67 266 70" stroke="#e07070" stroke-width="1.5" fill="none" opacity=".7"/>
-        <!-- lip fill -->
-        <path d="M252 71 Q259 78 266 71 Q263 76 259 77 Q255 76 252 71 Z" fill="#e87878" opacity=".5"/>
-        <!-- lip shine -->
-        <ellipse cx="259" cy="72" rx="5" ry="2" fill="rgba(255,255,255,.25)"/>
-        <!-- Smile dimples -->
-        <circle cx="246" cy="75" r="2" fill="rgba(200,100,80,.2)"/>
-        <circle cx="272" cy="75" r="2" fill="rgba(200,100,80,.2)"/>
-      </g><!-- /girl head -->
-    </g><!-- /girl body -->
-
-
-    <!-- ████████████████████████
-         CLASPED HANDS — center
-    ████████████████████████ -->
-    <g class="clasped" filter="url(#softGlow)">
-      <!-- boy's palm -->
-      <ellipse cx="192" cy="97" rx="12" ry="10" fill="url(#skinB)"/>
-      <!-- boy fingers reaching up -->
-      <ellipse cx="184" cy="89" rx="5" ry="4" fill="url(#skinB)" transform="rotate(-15,184,89)"/>
-      <ellipse cx="190" cy="85" rx="5" ry="4" fill="url(#skinB)" transform="rotate(-5,190,85)"/>
-      <ellipse cx="197" cy="84" rx="5" ry="4" fill="url(#skinB)" transform="rotate(5,197,84)"/>
-      <ellipse cx="203" cy="87" rx="4.5" ry="3.8" fill="url(#skinB)" transform="rotate(15,203,87)"/>
-      <!-- knuckle lines boy -->
-      <path d="M186 93 Q197 88 208 93" stroke="rgba(160,100,60,.25)" stroke-width="2" fill="none"/>
-
-      <!-- girl's palm -->
-      <ellipse cx="212" cy="97" rx="12" ry="10" fill="url(#skinG)"/>
-      <!-- girl fingers interlaced -->
-      <ellipse cx="220" cy="89" rx="5" ry="4" fill="url(#skinG)" transform="rotate(15,220,89)"/>
-      <ellipse cx="214" cy="85" rx="5" ry="4" fill="url(#skinG)" transform="rotate(5,214,85)"/>
-      <ellipse cx="207" cy="84" rx="5" ry="4" fill="url(#skinG)" transform="rotate(-5,207,84)"/>
-
-      <!-- Engagement ring on her ring finger ✨ -->
-      <rect x="203" y="78" width="8" height="5" rx="2.5" fill="url(#skinG)"/>
-      <circle cx="207" cy="79" r="4.2" fill="none" stroke="#f6d07a" stroke-width="2.8"/>
-      <circle cx="207" cy="79" r="2.2" fill="#f6d07a"/>
-      <!-- Diamond sparkle on ring -->
-      <text x="200" y="74" font-size="7" fill="rgba(246,208,122,.9)" text-anchor="middle">✦</text>
-    </g>
-
-    <!-- Heart above clasped hands -->
-    <text class="cHeart" x="202" y="72" font-size="22" fill="#ff6b9d" text-anchor="middle">♥</text>
-
-    <!-- Musical notes -->
-    <text class="n1" x="60"  y="52" font-size="18" fill="rgba(246,208,122,.7)">♪</text>
-    <text class="n2" x="344" y="40" font-size="20" fill="rgba(255,170,197,.65)">♫</text>
-    <text class="n3" x="46"  y="92" font-size="14" fill="rgba(255,170,197,.48)">♩</text>
-    <text class="n1" x="360" y="82" font-size="14" fill="rgba(246,208,122,.52)">♪</text>
-    <text class="n2" x="82"  y="158" font-size="12" fill="rgba(201,184,245,.42)">♫</text>
-    <text class="n3" x="324" y="168" font-size="12" fill="rgba(94,207,176,.42)">♩</text>
-
-    <!-- Sparkles -->
-    <text class="sp1" x="42"  y="128" font-size="16" fill="rgba(246,208,122,.75)">✨</text>
-    <text class="sp2" x="352" y="116" font-size="16" fill="rgba(255,170,197,.75)">✨</text>
-    <text class="sp3" x="196" y="22"  font-size="14" fill="rgba(201,184,245,.7)">⭐</text>
-    <text class="sp1" x="90"  y="200" font-size="12" fill="rgba(255,170,197,.55)">✦</text>
-    <text class="sp2" x="308" y="204" font-size="12" fill="rgba(246,208,122,.55)">✦</text>
-    <text class="sp3" x="174" y="248" font-size="11" fill="rgba(94,207,176,.45)">✦</text>
-    <!-- Colorful small hearts floating around -->
-    <text class="n3" x="72"  y="72"  font-size="10" fill="rgba(255,107,157,.6)">♡</text>
-    <text class="n1" x="334" y="145" font-size="10" fill="rgba(255,107,157,.55)">♡</text>
-   </svg>
-  </div><!-- /couple-stage -->
-
-  <!-- ════════════════════════════
-       QUOTE (no author line)
-  ════════════════════════════ -->
   <div class="quote-card reveal d5">
     <p class="quote-text">
-      "In all the world, there is no heart for me like yours.<br>
-      In all the world, there is no love for you like mine."
+      In one year, we made countless tiny memories that turned into something beautiful.
+      Every smile, every late-night talk, every soft moment with you became part of my favorite story.
     </p>
   </div>
 
-  <!-- ════════════════════════════
-       MEMORY TILES (updated)
-  ════════════════════════════ -->
-  <p class="mem-title reveal d5">✦ &nbsp; Our First Year &nbsp; ✦</p>
+  <div class="mem-title reveal d6">Our little memories</div>
   <div class="tiles reveal d6">
-    <div class="tile">
-      <span class="ti">🌸</span>
-      <span class="tl">First Hello</span>
-      <span class="td">2 / 10 / 2023</span>
-      <div>Where it all began</div>
-    </div>
-    <div class="tile">
-      <span class="ti">☕</span>
-      <span class="tl">First Date</span>
-      <span class="td">at Delifrance</span>
-      <div>Butterflies &amp; smiles</div>
-    </div>
-    <div class="tile">
-      <span class="ti">🌙</span>
-      <span class="tl">Late Nights</span>
-      <div>Talking till dawn</div>
-    </div>
-    <div class="tile">
-      <span class="ti">💌</span>
-      <span class="tl">Sweet Words</span>
-      <div>Texts that made us blush</div>
-    </div>
-    <div class="tile">
-      <span class="ti">🎂</span>
-      <span class="tl">Birthdays</span>
-      <div>Making memories</div>
-    </div>
-    <div class="tile">
-      <span class="ti">🌟</span>
-      <span class="tl">Today</span>
-      <div>365 days of us</div>
-    </div>
+    <div class="tile"><span class="ti">☕</span><span class="tl">Coffee Dates</span><div>Warm talks & soft smiles</div></div>
+    <div class="tile"><span class="ti">📸</span><span class="tl">Pictures</span><div>Moments we can keep forever</div></div>
+    <div class="tile"><span class="ti">🌙</span><span class="tl">Late Nights</span><div>Talking till dawn</div></div>
+    <div class="tile"><span class="ti">💌</span><span class="tl">Sweet Words</span><div>Texts that made us blush</div></div>
+    <div class="tile"><span class="ti">🎂</span><span class="tl">Birthdays</span><div>Making memories</div></div>
+    <div class="tile"><span class="ti">🌟</span><span class="tl">Today</span><div>365 days of us</div></div>
   </div>
 
   <div class="sig reveal d7">Happy Anniversary 💫</div>
   <p class="sig-sub reveal d8">Here's to forever, together ✦</p>
 
-</div><!-- /page -->
+  <div class="next-page-wrap reveal d8">
+    <a class="next-page-btn" href="#page2">Next Page ❤</a>
+  </div>
+
+</div>
+
+<section class="second-page" id="page2">
+  <div class="flower-side flower-left" aria-hidden="true">
+    <svg viewBox="0 0 200 900" xmlns="http://www.w3.org/2000/svg">
+      <path d="M45 900 C65 760,78 650,92 520 C106 390,120 270,140 110" stroke="#b8b38a" stroke-width="4" fill="none" opacity=".7"/>
+      <path d="M78 640 C54 618,44 590,54 565 C73 570,90 590,94 620" fill="#e8d8d0"/>
+      <path d="M100 548 C76 528,68 498,76 472 C99 476,117 499,120 529" fill="#f0dfd8"/>
+      <path d="M125 446 C100 427,90 396,99 370 C124 376,143 400,146 430" fill="#efd7dc"/>
+      <path d="M150 338 C126 320,116 290,124 266 C148 270,166 292,170 322" fill="#f1d7df"/>
+      <path d="M164 238 C142 221,132 196,138 172 C160 178,175 199,180 224" fill="#ebd3dd"/>
+      <ellipse cx="92" cy="622" rx="26" ry="46" fill="#f3dadd" transform="rotate(-24 92 622)"/>
+      <ellipse cx="118" cy="532" rx="28" ry="50" fill="#f2d5da" transform="rotate(-18 118 532)"/>
+      <ellipse cx="142" cy="434" rx="30" ry="52" fill="#f0d2da" transform="rotate(-16 142 434)"/>
+      <ellipse cx="167" cy="326" rx="32" ry="54" fill="#f3d8dd" transform="rotate(-14 167 326)"/>
+      <ellipse cx="180" cy="227" rx="28" ry="48" fill="#efd4dc" transform="rotate(-10 180 227)"/>
+    </svg>
+  </div>
+
+  <div class="flower-side flower-right" aria-hidden="true">
+    <svg viewBox="0 0 200 900" xmlns="http://www.w3.org/2000/svg">
+      <path d="M45 900 C65 760,78 650,92 520 C106 390,120 270,140 110" stroke="#b8b38a" stroke-width="4" fill="none" opacity=".7"/>
+      <path d="M78 640 C54 618,44 590,54 565 C73 570,90 590,94 620" fill="#e8d8d0"/>
+      <path d="M100 548 C76 528,68 498,76 472 C99 476,117 499,120 529" fill="#f0dfd8"/>
+      <path d="M125 446 C100 427,90 396,99 370 C124 376,143 400,146 430" fill="#efd7dc"/>
+      <path d="M150 338 C126 320,116 290,124 266 C148 270,166 292,170 322" fill="#f1d7df"/>
+      <path d="M164 238 C142 221,132 196,138 172 C160 178,175 199,180 224" fill="#ebd3dd"/>
+      <ellipse cx="92" cy="622" rx="26" ry="46" fill="#f3dadd" transform="rotate(-24 92 622)"/>
+      <ellipse cx="118" cy="532" rx="28" ry="50" fill="#f2d5da" transform="rotate(-18 118 532)"/>
+      <ellipse cx="142" cy="434" rx="30" ry="52" fill="#f0d2da" transform="rotate(-16 142 434)"/>
+      <ellipse cx="167" cy="326" rx="32" ry="54" fill="#f3d8dd" transform="rotate(-14 167 326)"/>
+      <ellipse cx="180" cy="227" rx="28" ry="48" fill="#efd4dc" transform="rotate(-10 180 227)"/>
+    </svg>
+  </div>
+
+  <div class="romantic-wrap">
+    <div class="romantic-card">
+      <div class="romantic-pin">📎</div>
+      <div class="romantic-top-note">for Mahe &amp; Mashkura</div>
+      <div class="romantic-title">Happy Anniversary</div>
+
+      <div class="romantic-photo-frame">
+        <img src="mahe-mashkura-couple.jpg" alt="Mahe and Mashkura together" onerror="this.style.display='none'; this.parentElement.style.minHeight='420px'; this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center'; this.parentElement.innerHTML += '<div style=\'font-family:Great Vibes,cursive;font-size:2.3rem;color:#d68a7b;text-align:center;line-height:1.4;padding:20px\'>Add your couple photo<br>as mahe-mashkura-couple.jpg</div>';">
+        <div class="romantic-photo-name">Mahe &amp; Mashkura</div>
+      </div>
+
+      <div class="romantic-date">
+        <div class="save">Save the date</div>
+        <div class="main">29 MARCH 2025</div>
+      </div>
+
+      <div class="romantic-message">
+        To my sweetest person, <strong>thank you for every smile, every prayer, every soft moment, and every memory we created together.</strong>
+        This one year has been full of warmth, comfort, laughter, and love. No matter where life takes us, this day will always stay special in my heart.
+        <br><br>
+        <strong>Happy Anniversary, my love.</strong> Here’s to us, to more beautiful memories, and to a love that keeps feeling like home.
+      </div>
+
+      <div class="romantic-footer">Made with love ❤</div>
+
+      <div class="second-actions">
+        <a class="back-page-btn" href="#topPage">Back to First Page</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <script>
-/* ═══ STARFIELD ═══ */
+/* STARFIELD */
 (function(){
   const cv=document.getElementById('starCanvas'),cx=cv.getContext('2d');let stars=[];
   function resize(){
@@ -881,92 +571,87 @@ body::-webkit-scrollbar{display:none}
       x:Math.random()*cv.width,y:Math.random()*cv.height,
       r:Math.random()*1.8+.2,a:Math.random(),
       da:(Math.random()-.5)*.016,
-      hue:Math.random()>0.85?Math.random()*60+340:0 // some coloured stars
+      hue:Math.random()<.2?46:Math.random()<.5?330:210
     }));
   }
   function draw(){
-    const g=cx.createLinearGradient(0,0,0,cv.height);
-    g.addColorStop(0,'#07061a');g.addColorStop(.5,'#0f0c2a');g.addColorStop(1,'#18102a');
-    cx.fillStyle=g;cx.fillRect(0,0,cv.width,cv.height);
-    stars.forEach(s=>{
-      s.a+=s.da;if(s.a>1||s.a<.06)s.da*=-1;
-      cx.beginPath();cx.arc(s.x,s.y,s.r,0,Math.PI*2);
-      cx.fillStyle=s.hue
-        ? `hsla(${s.hue},80%,80%,${s.a})`
-        : `rgba(255,248,240,${s.a})`;
-      cx.fill();
-    });
+    cx.clearRect(0,0,cv.width,cv.height);
+    for(const s of stars){
+      s.a+=s.da;if(s.a<.05||s.a>1)s.da*=-1;
+      cx.beginPath();cx.fillStyle=`hsla(${s.hue},100%,85%,${s.a})`;
+      cx.arc(s.x,s.y,s.r,0,Math.PI*2);cx.fill();
+    }
     requestAnimationFrame(draw);
   }
   window.addEventListener('resize',resize);resize();draw();
 })();
 
-/* ═══ SHOOTING STARS ═══ */
-function shootStar(){
-  const s=document.createElement('div');s.className='shoot';
-  s.style.left=(5+Math.random()*80)+'vw';
-  s.style.top=(Math.random()*35)+'vh';
-  const d=1+Math.random()*1.3;s.style.animationDuration=d+'s';
-  document.body.appendChild(s);setTimeout(()=>s.remove(),(d+.3)*1000);
+/* PETALS */
+(function(){
+  const box=document.getElementById('petals');
+  function addPetal(){
+    const p=document.createElement('div');
+    p.className='petal';
+    const s=10+Math.random()*16;
+    p.style.width=s+'px'; p.style.height=s*1.4+'px';
+    p.style.left=Math.random()*100+'vw';
+    p.style.bottom='-40px';
+    p.style.borderRadius='70% 0 70% 0';
+    p.style.background=Math.random()>.45?'rgba(255,170,197,.95)':'rgba(246,208,122,.88)';
+    p.style.animationDuration=(8+Math.random()*7)+'s';
+    p.style.transform=`rotate(${Math.random()*360}deg)`;
+    box.appendChild(p);
+    setTimeout(()=>p.remove(),16000);
+  }
+  setInterval(addPetal,700);
+})();
+
+/* SHOOTING STARS */
+setInterval(()=>{
+  const s=document.createElement('div'); s.className='shoot';
+  s.style.left=Math.random()*window.innerWidth*.7+'px';
+  s.style.top=Math.random()*window.innerHeight*.35+'px';
+  s.style.animationDuration=(1.2+Math.random()*1.8)+'s';
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),3500);
+},3200);
+
+/* CONFETTI on load */
+function launchConfetti(){
+  for(let i=0;i<44;i++){
+    const c=document.createElement('div'); c.className='conf';
+    const size=6+Math.random()*8;
+    c.style.left=Math.random()*100+'vw'; c.style.width=size+'px'; c.style.height=size*1.6+'px';
+    c.style.background=['#f6d07a','#ff6b9d','#c9b8f5','#a8f0d8','#fff8f0'][Math.floor(Math.random()*5)];
+    c.style.borderRadius=Math.random()>.5?'2px':'50%';
+    c.style.animationDuration=(3.5+Math.random()*2.5)+'s';
+    document.body.appendChild(c); setTimeout(()=>c.remove(),6500);
+  }
 }
-setInterval(()=>shootStar(),3500+Math.random()*4000);setTimeout(shootStar,1500);
+window.addEventListener('load',()=>setTimeout(launchConfetti,700));
 
-/* ═══ FLOATING PETALS ═══ */
-const pCont=document.getElementById('petals');
-const pList=['🌸','💕','✨','💫','🌹','💖','⭐','🌷','💝','🌺','🎀'];
-function spawnPetal(){
-  const p=document.createElement('span');p.className='petal';
-  p.textContent=pList[Math.floor(Math.random()*pList.length)];
-  Object.assign(p.style,{
-    left:Math.random()*100+'vw',bottom:'-40px',
-    fontSize:(.6+Math.random()*.95)+'rem',
-    animationDuration:(7+Math.random()*11)+'s',
-    animationDelay:(Math.random()*5)+'s'
-  });
-  pCont.appendChild(p);setTimeout(()=>p.remove(),20000);
-}
-for(let i=0;i<22;i++)spawnPetal();setInterval(spawnPetal,1200);
+/* YOUTUBE MUSIC */
+const ytIframe=document.getElementById('ytPlayer');
+const musicBtn=document.getElementById('musicBtn');
+let ytMuted=false;
+let attempted=false;
 
-/* ═══ CONFETTI BURST ═══ */
-const CC=['#f6d07a','#ffaac5','#c9b8f5','#ff6b9d','#5ecfb0','#85c1e9','#a8f0d8','#ffe4b5','#ff8c69','#fff'];
-setTimeout(()=>{
-  for(let i=0;i<100;i++)setTimeout(()=>{
-    const c=document.createElement('div');c.className='conf';
-    const s=6+Math.random()*12;
-    Object.assign(c.style,{
-      width:s+'px',height:(s*(.38+Math.random()))+'px',
-      left:Math.random()*100+'vw',
-      background:CC[Math.floor(Math.random()*CC.length)],
-      borderRadius:Math.random()>.5?'50%':'2px',
-      animationDuration:(2.5+Math.random()*3.2)+'s'
-    });
-    document.body.appendChild(c);setTimeout(()=>c.remove(),6500);
-  },i*30);
-},900);
-
-/* ═══ YOUTUBE MUSIC ═══ */
-let ytMuted = false;
-const ytIframe = document.getElementById('ytPlayer');
-const musicBtn = document.getElementById('musicBtn');
-
-// Try to auto-play on first user interaction
-let autoStarted = false;
 function tryAutoStart(){
-  if(autoStarted) return;
-  autoStarted = true;
-  // YouTube iframe autoplay already set in src; just show playing state
-  musicBtn.querySelector('.micon').textContent='🎶';
+  if(attempted) return;
+  attempted=true;
+  ytIframe.contentWindow.postMessage(JSON.stringify({event:'command',func:'playVideo',args:''}),'*');
+  ytIframe.contentWindow.postMessage(JSON.stringify({event:'command',func:'unMute',args:''}),'*');
   musicBtn.classList.add('playing');
 }
-document.addEventListener('click',tryAutoStart,{once:true});
-document.addEventListener('touchstart',tryAutoStart,{once:true});
+['click','touchstart','keydown'].forEach(ev=>{
+  document.addEventListener(ev,tryAutoStart,{once:true});
+});
 
 function toggleYT(){
-  ytMuted = !ytMuted;
-  const icon = musicBtn.querySelector('.micon');
-  const label = musicBtn.querySelector('.mlabel');
+  const icon=musicBtn.querySelector('.micon');
+  const label=musicBtn.querySelector('.mlabel');
+  ytMuted=!ytMuted;
   if(ytMuted){
-    // Post message to mute YouTube iframe
     ytIframe.contentWindow.postMessage(JSON.stringify({event:'command',func:'mute',args:''}),'*');
     icon.textContent='🔇'; label.textContent='muted';
     musicBtn.classList.remove('playing');
@@ -979,7 +664,7 @@ function toggleYT(){
   tryAutoStart();
 }
 
-// Pulse hint after 3s
+/* small pulse hint */
 setTimeout(()=>{
   musicBtn.style.transform='scale(1.32)';
   setTimeout(()=>musicBtn.style.transform='',700);
